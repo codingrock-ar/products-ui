@@ -35,9 +35,12 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then( response => response.json())
         .then( product => {
+            allProducts.push(product);
+
             productContainer.innerHTML += `
             <div id="product-${product.id}">
-                <h2>${product.price}</h2>
+                <h2>${product.name}</h2>
+                <h4>Price: ${product.price}</h4>
                 <button data-id="${product.id}" id="edit-${product.id}" data-action="edit">Edit</button>
                 <button data-id="${product.id}" id="delete-${product.id}" data-action="delete">Delete</button>
             </div>
@@ -49,12 +52,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.target.dataset.action === 'edit') {
             const editButton = document.querySelector(`#edit-${e.target.dataset.id}`)
             editButton.disabled = true
-            
+
             const productData = allProducts.find((product) => {
               return product.id == e.target.dataset.id
-            })
-            
-            const editForm = productContainer.querySelector(`#edit-product-${e.target.dataset.id}`)
+            });
+
+            const editForm = productContainer.querySelector(`#edit-product-${e.target.dataset.id}`);
 
             editForm.innerHTML += `
             <div id='edit-product'>
@@ -62,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <input required id="edit-name" placeholder="${productData.name}">
                 <input required id="edit-price" placeholder="${productData.price}">
                 <input type="submit" value="Edit Product">
-            </div>`
+            </div>`;
 
             editForm.addEventListener("submit", (e) => {
                 e.preventDefault()
