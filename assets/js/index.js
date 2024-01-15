@@ -9,9 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
     .then( productData => productData.forEach(function(product) {
         allProducts = productData
         productContainer.innerHTML += `
-        <div id="product-${product.id}">
+        <div id="product-${product.id}" class="product">
             <h2>${product.name}</h2>
-            <h4>Price: ${product.price}</h4>
+            <h4>Price: $${product.price}</h4>
+            <h4>Dollar Price: u$d ${product.dollarPrice}</h4>
             <button data-id="${product.id}" id="edit-${product.id}" data-action="edit">Edit</button>
             <button data-id="${product.id}" id="delete-${product.id}" data-action="delete">Delete</button>
         </div>
@@ -38,9 +39,10 @@ document.addEventListener('DOMContentLoaded', function() {
             allProducts.push(product);
 
             productContainer.innerHTML += `
-            <div id="product-${product.id}">
+            <div id="product-${product.id}" class="product">
                 <h2>${product.name}</h2>
-                <h4>Price: ${product.price}</h4>
+                <h4>Price: $${product.price}</h4>
+                <h4>Dollar Price: u$d ${product.dollarPrice}</h4>
                 <button data-id="${product.id}" id="edit-${product.id}" data-action="edit">Edit</button>
                 <button data-id="${product.id}" id="delete-${product.id}" data-action="delete">Delete</button>
             </div>
@@ -60,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const editForm = productContainer.querySelector(`#edit-product-${e.target.dataset.id}`);
 
             editForm.innerHTML += `
-            <div id='edit-product'>
+            <div id='edit-product' class="edit-product">
               <form id="product-form">
                 <input required id="edit-name" placeholder="${productData.name}">
                 <input required id="edit-price" placeholder="${productData.price}">
@@ -85,14 +87,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }).then( response => response.json() )
                 .then( product => {
                   editedProduct.innerHTML = `
-                  <div id="product-${product.id}">
+                  <div id="product-${product.id}" class="product">
                     <h2>${product.name}</h2>
-                    <h4>Product: ${product.price}</h4>
+                    <h4>Product: $${product.price}</h4>
+                    <h4>Dollar Price: u$d ${product.dollarPrice}</h4>
                     <button data-id=${product.id} id="edit-${product.id}" data-action="edit">Edit</button>
                     <button data-id=${product.id} id="delete-${product.id}" data-action="delete">Delete</button>
                   </div>
-                  <div id="edit-product-${product.id}">
-                  </div>`
+                  <div id="edit-product-${product.id}"></div>`
                   editForm.innerHTML = ""
                 })
             }) // end of this event Listener for edit submit

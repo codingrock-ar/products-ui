@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Products Lister</title>
-    <link rel="stylesheet" href="./assets/css/style.css" type="text/css" media="all">
-  </head>
-  <body>
-    <h1>Products</h1>
-    <div id='create-product'>
-      <form id="product-form">
-        <input id="name" placeholder="name...">
-        <input id="price" placeholder="price...">
-        <input type="submit" value="Add product">
-    </div>
-    <div id='product-container'></div>
-    <script src='./assets/js/index.js'></script>
-  </body>
+    <head>
+        <meta charset="utf-8">
+        <title>Products Lister</title>
+        <link rel="stylesheet" href="./assets/css/style.css" type="text/css" media="all">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Products</h1>
+        <div id='create-product' class="create-product">
+            <form id="product-form">
+                <input id="name" placeholder="name...">
+                <input id="price" placeholder="price...">
+                <input type="submit" value="Add product">
+            </form>
+        </div>
+        <div id='product-container'></div>
+        <script src='./assets/js/index.js'></script>
+    </body>
 </html>
